@@ -1,0 +1,11 @@
+.primary_btn{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 10px;
+    background: black;
+    color: #fff;
+    border-radius: 5px;
+    min-width:220px ;
+    cursor: pointer;
+}
