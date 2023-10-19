@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../button/Button";
 import styles from "./Contact.module.css";
 import { MdMessage } from "react-icons/md";
@@ -6,15 +6,34 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 
 const ContactForm = () => {
+  const [name, setName] = useState('Anshu');
+  const [email, setEmail] = useState('coding.com');
+  const [text, setText] = useState('my love')
+
+  const onSubmit =(e)=>{
+    e.preventDefault()
+    console.log(e)
+
+    setName(e.target[0].value);
+    setEmail(e.target[1].value);
+    setText(e.target[2].value);
+
+
+    console.log("name", e.target[0].value);
+    console.log("email", e.target[1].value);
+    console.log("text", e.target[2].value);
+  }
+
   return (
     <section className={styles.container}>
       <div className={styles.contact_form}>
         <div className={styles.top_btn}>
-          <Button
+          <Button 
             text="VIA SUPPORT CHAT"
             icon={<MdMessage fontSize="24px" />}
           />
-          <Button text="VIA CALL" icon={<FaPhoneAlt fontSize="24px" />} />
+          <Button text="VIA CALL" 
+          icon={<FaPhoneAlt fontSize="24px" />} />
         </div>
         <Button
           isOutline={true}
@@ -22,7 +41,7 @@ const ContactForm = () => {
           icon={<HiMail fontSize="24px" />}
         />
 
-        <form>
+        <form onSubmit={onSubmit}>
           <div className={styles.form_control}>
             <label htmlFor="name">Name</label>
             <input type="text" name="name" />
@@ -42,10 +61,13 @@ const ContactForm = () => {
           }}>
             <Button text="SUBMIT BUTTON"   />
           </div>
+          <div>
+            {name + ' ' + email + '' + text + ''} 
+          </div>
         </form>
       </div>
       <div className={styles.contact_image}>
-        <img src="./images/contact.png" alt="contact image" />
+        <img src="./images/contact1.png" alt="contact image" />
       </div>
     </section>
   );
